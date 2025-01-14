@@ -7,31 +7,114 @@
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      
     />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="vendor/fontawesome-free/css/all.min.css"
       rel="stylesheet"
       type="text/css"
     />
     <style>
+      /* Global styles */
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fcde67;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Navbar styles */
+      nav.navbar {
+        background-color: #212121 !important; /* Warna navbar */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand {
+        color: #fff !important;
+        font-weight: 600;
+        font-size: 1.5rem;
+      }
+
+      .navbar-brand:hover {
+        color: #fff !important;
+      }
+
+      .nav-link {
+        color: #fff !important;
+        font-weight: 500;
+      }
+
+      .nav-link:hover {
+        color: #ddd !important;
+      }
+
+      /* Card styles */
+      .card {
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+      }
+
       .card-img-top {
         height: 200px;
         object-fit: cover;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
       }
+
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+      }
+
       .card-text {
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .card-footer {
+        background-color: #5bccf6;
+        border-top: none;
+        color: #333;
+        font-size: 0.85rem;
+      }
+
+      /* Blog container spacing */
+      #blogContainer {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .navbar-brand {
+          font-size: 1.25rem;
+        }
+
+        .card-title {
+          font-size: 1.1rem;
+        }
+
+        .card-text {
+          font-size: 0.85rem;
+        }
       }
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">Blogger</a>
+        <a class="navbar-brand" href="#">BlogKita</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -72,23 +155,17 @@
             col.className = "col-md-4 mb-4";
 
             col.innerHTML = `
-                        <div class="card h-100">
-                            <img src="${
-                              blog.image
-                            }" class="card-img-top" alt="${
-              blog.title
-            }" onerror="this.src='https://placehold.co/600x400'">
-                            <div class="card-body">
-                                <h5 class="card-title">${blog.title}</h5>
-                                <p class="card-text">${blog.content}</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Created: ${new Date(
-                                  blog.created_at
-                                ).toLocaleDateString()}</small>
-                            </div>
-                        </div>
-                    `;
+              <div class="card h-100">
+                <img src="${blog.image}" class="card-img-top" alt="${blog.title}" onerror="this.src='https://placehold.co/600x400'">
+                <div class="card-body">
+                  <h5 class="card-title">${blog.title}</h5>
+                  <p class="card-text">${blog.content}</p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Created: ${new Date(blog.created_at).toLocaleDateString()}</small>
+                </div>
+              </div>
+            `;
 
             blogContainer.appendChild(col);
           });
